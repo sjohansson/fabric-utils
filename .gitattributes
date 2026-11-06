@@ -1,0 +1,77 @@
+# .gitattributes
+# Enforces LF line endings in the repository and on all checkouts.
+# This overrides core.autocrlf/core.eol on Windows — no per-developer config needed.
+# Python, shell, and PySpark/Fabric all handle LF correctly.
+
+# ── Default: normalise all text files to LF ───────────────────────────────────
+* text=auto eol=lf
+
+# ── Python ────────────────────────────────────────────────────────────────────
+# diff=python gives meaningful hunk headers (shows enclosing function/class name)
+*.py    text eol=lf diff=python
+*.pyi   text eol=lf diff=python
+
+# ── Jupyter notebooks ─────────────────────────────────────────────────────────
+# Treated as text (JSON) so diffs work; conflict-resolution is messy either way
+*.ipynb text eol=lf
+
+# ── Config / build ────────────────────────────────────────────────────────────
+*.toml  text eol=lf
+*.cfg   text eol=lf
+*.ini   text eol=lf
+
+# ── Structured data / markup ──────────────────────────────────────────────────
+*.json  text eol=lf
+*.jsonc text eol=lf
+*.yml   text eol=lf
+*.yaml  text eol=lf
+*.xml   text eol=lf
+
+# ── Documentation ─────────────────────────────────────────────────────────────
+*.md    text eol=lf diff=markdown
+*.rst   text eol=lf
+*.txt   text eol=lf
+
+# ── Scripts ───────────────────────────────────────────────────────────────────
+# Shell scripts: LF is mandatory — CRLF breaks the shebang on Unix/macOS
+*.sh    text eol=lf
+
+# ── Web / generated assets ────────────────────────────────────────────────────
+*.html  text eol=lf
+*.css   text eol=lf
+*.js    text eol=lf
+
+# ── Binary files — prevent diff/merge/encoding corruption ─────────────────────
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.gif   binary
+*.ico   binary
+*.svg   binary
+*.pdf   binary
+*.whl   binary
+*.zip   binary
+*.tar   binary
+*.gz    binary
+*.bz2   binary
+*.xz    binary
+
+# ── Git-generated / setuptools-scm ────────────────────────────────────────────
+# Mark as generated so GitHub excludes it from language stats and diff noise
+src/fabric_utils/_version.py linguist-generated=true
+
+# ── git archive export-ignore ─────────────────────────────────────────────────
+# Files included in the repo but excluded from source archives (git archive / GitHub tarballs)
+.gitattributes      export-ignore
+.gitignore          export-ignore
+.editorconfig       export-ignore
+.vscode/            export-ignore
+.claude/            export-ignore
+.github/            export-ignore
+AGENTS.md           export-ignore
+CLAUDE.md           export-ignore
+scripts/            export-ignore
+noxfile.py          export-ignore
+reference-notebooks/ export-ignore
+specs/              export-ignore
+tests/              export-ignore

@@ -1,0 +1,50 @@
+# EditorConfig: https://editorconfig.org
+# Applied before any language-server or formatter runs.
+# Ruff (Python) and markdownlint enforce their own stricter rules on top.
+root = true
+
+# ── Baseline for all files ───────────────────────────────────────────────
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = space
+indent_size = 4
+
+# ── Python ───────────────────────────────────────────────────────────────
+# PEP 8 + ruff line-length from pyproject.toml
+[*.{py,pyi}]
+indent_size = 4
+max_line_length = 120
+
+# ── Jupyter notebooks (JSON internally) ──────────────────────────────────
+[*.ipynb]
+indent_size = 2
+
+# ── Config / build files ─────────────────────────────────────────────────
+[*.toml]
+indent_size = 4
+
+[*.{cfg,ini}]
+indent_size = 4
+
+# ── Structured data / markup ──────────────────────────────────────────────
+[*.{json,jsonc}]
+indent_size = 2
+
+[*.{yml,yaml}]
+indent_size = 2
+
+[*.{xml,html,css,js,ts}]
+indent_size = 2
+
+# ── Documentation ────────────────────────────────────────────────────────
+[*.{md,rst,txt}]
+indent_size = 2
+
+# ── Scripts ──────────────────────────────────────────────────────────────
+# Shell scripts must be LF — shebang parsing breaks with CRLF on Unix/macOS
+[*.sh]
+indent_size = 2
+end_of_line = lf
