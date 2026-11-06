@@ -1,0 +1,73 @@
+{
+  "version": "2.0.0",
+  // Every task runs nox from the workspace .venv so it works on Windows, Linux and macOS.
+  // ${command:python.interpreterPath} resolves to the interpreter selected in VS Code.
+  "tasks": [
+    {
+      "label": "Install dev dependencies",
+      "type": "shell",
+      "command": "${command:python.interpreterPath}",
+      "args": ["-m", "pip", "install", "-e", ".[dev]"],
+      "problemMatcher": [],
+      "presentation": { "panel": "new", "reveal": "always" }
+    },
+    {
+      "label": "nox: lint",
+      "type": "shell",
+      "command": "${command:python.interpreterPath}",
+      "args": ["-m", "nox", "-s", "lint"],
+      "problemMatcher": [],
+      "presentation": { "panel": "shared", "reveal": "always" }
+    },
+    {
+      "label": "nox: format",
+      "type": "shell",
+      "command": "${command:python.interpreterPath}",
+      "args": ["-m", "nox", "-s", "format"],
+      "problemMatcher": [],
+      "presentation": { "panel": "shared", "reveal": "always" }
+    },
+    {
+      "label": "nox: typecheck",
+      "type": "shell",
+      "command": "${command:python.interpreterPath}",
+      "args": ["-m", "nox", "-s", "typecheck"],
+      "problemMatcher": [],
+      "presentation": { "panel": "shared", "reveal": "always" }
+    },
+    {
+      "label": "nox: tests",
+      "type": "shell",
+      "command": "${command:python.interpreterPath}",
+      "args": ["-m", "nox", "-s", "tests"],
+      "group": { "kind": "test", "isDefault": true },
+      "problemMatcher": ["$python"],
+      "presentation": { "panel": "shared", "reveal": "always" }
+    },
+    {
+      "label": "nox: tests_spark",
+      "type": "shell",
+      "command": "${command:python.interpreterPath}",
+      "args": ["-m", "nox", "-s", "tests_spark"],
+      "problemMatcher": ["$python"],
+      "presentation": { "panel": "shared", "reveal": "always" }
+    },
+    {
+      "label": "nox: build",
+      "type": "shell",
+      "command": "${command:python.interpreterPath}",
+      "args": ["-m", "nox", "-s", "build"],
+      "problemMatcher": [],
+      "presentation": { "panel": "shared", "reveal": "always" }
+    },
+    {
+      "label": "nox: all gates (lint, typecheck, tests)",
+      "type": "shell",
+      "command": "${command:python.interpreterPath}",
+      "args": ["-m", "nox"],
+      "group": "build",
+      "problemMatcher": [],
+      "presentation": { "panel": "shared", "reveal": "always" }
+    }
+  ]
+}

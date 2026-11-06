@@ -1,0 +1,59 @@
+{
+    "github.copilot.chat.commitMessageGeneration.instructions": [
+    {
+      "file": ".github/copilot-commit-message-instructions.md"
+    }
+  ],
+  // Interpreter: VS Code resolves the workspace .venv on every platform
+  // (.venv/bin/python on Linux/macOS, .venv/Scripts/python.exe on Windows).
+  "python.defaultInterpreterPath": "${workspaceFolder}/.venv",
+  "python.terminal.activateEnvironment": true,
+  "python.testing.pytestEnabled": true,
+  "python.testing.pytestArgs": ["tests"],
+  "python.testing.unittestEnabled": false,
+  // Pylance / language server
+  "python.analysis.diagnosticMode": "workspace",
+  // Editor
+  "editor.rulers": [80,120],
+  "[python]": {
+    "editor.defaultFormatter": "charliermarsh.ruff",
+    "editor.codeActionsOnSave": {
+      "source.fixAll.ruff": "explicit",
+      "source.organizeImports.ruff": "explicit"
+    }
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
+  },
+  "[yaml]": {
+    "editor.tabSize": 2
+  },
+  // Explorer / search noise reduction
+  "files.exclude": {
+    "**/__pycache__": true,
+    "**/*.egg-info": true,
+    ".nox": true,
+    ".pytest_cache": true,
+    ".ruff_cache": true,
+    ".venv": true,
+    "build": true,
+    "dist": true
+  },
+  "search.exclude": {
+    "**/__pycache__": true,
+    "**/*.egg-info": true,
+    ".nox": true,
+    ".venv": true,
+    "build": true,
+    "dist": true,
+    "TestResults": true
+  },
+  "cSpell.words": [
+    "notebookutils",
+    "onelake",
+    "pyodbc",
+    "pyright",
+    "pyspark",
+    "vorder"
+  ]
+}
